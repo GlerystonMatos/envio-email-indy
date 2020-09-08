@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{825E72C4-43C7-47DA-B54B-99124271085C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="EnvioEmailIndy.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EnvioEmailIndy">
+        <MSBuild Projects="EnvioEmailIndy.dproj"/>
+    </Target>
+    <Target Name="EnvioEmailIndy:Clean">
+        <MSBuild Projects="EnvioEmailIndy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EnvioEmailIndy:Make">
+        <MSBuild Projects="EnvioEmailIndy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EnvioEmailIndy"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EnvioEmailIndy:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EnvioEmailIndy:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
