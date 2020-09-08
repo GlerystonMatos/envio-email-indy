@@ -40,7 +40,6 @@ type
     procedure IdLogEventSent(ASender: TComponent; const AText, AData: string);
     procedure IdLogEventReceived(ASender: TComponent; const AText, AData: string);
     procedure btnComHTMLClick(Sender: TObject);
-    procedure btnComImagenClick(Sender: TObject);
   private
     FAnexo: string;
     procedure Enviar(const AMensagem: string; const AIsHtml: Boolean);
@@ -111,6 +110,7 @@ procedure TfrmPrincipal.Enviar(const AMensagem: string; const AIsHtml: Boolean);
 var
   idSMTP: TIdSMTP;
   idMessage: TIdMessage;
+  idAttachmentFile: TIdAttachmentFile;
 begin
   idSMTP := TIdSMTP.Create(nil);
   try
@@ -139,7 +139,12 @@ begin
       idMessage.Body.Add(AMensagem);
 
       if (FileExists(FAnexo)) then
-        TIdAttachmentFile.Create(idMessage.MessageParts, FAnexo);
+      begin
+        idAttachmentFile := TIdAttachmentFile.Create(idMessage.MessageParts, FAnexo);
+        idAttachmentFile.ContentType := 'image/jpeg';
+        idAttachmentFile.ContentDisposition := 'inline';
+        idAttachmentFile.ExtraHeaders.Values['content-id'] := ExtractFileName(FAnexo);
+      end;
 
       idMessage.From.Text := Trim(detEmail.Text);
       idMessage.Subject := 'Teste para envio de e-mail com Indy';
@@ -221,12 +226,6 @@ begin
     '</html>';
 
   Enviar(mensagem, True);
-end;
-
-procedure TfrmPrincipal.btnComImagenClick(Sender: TObject);
-begin
-  lbLog.Clear;
-  Enviar('Mensagem com Imagem', False);
 end;
 
 end.

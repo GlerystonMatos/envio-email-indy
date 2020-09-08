@@ -22,7 +22,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 161
     Height = 25
     Caption = 'Enviar Mensagem com Anexo'
-    TabOrder = 0
+    TabOrder = 2
     OnClick = btnComAnexoClick
   end
   object lbLog: TListBox
@@ -32,9 +32,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 168
     Align = alBottom
     ItemHeight = 13
-    TabOrder = 1
-    ExplicitTop = 76
-    ExplicitWidth = 442
+    TabOrder = 4
   end
   object btnComHTML: TButton
     Left = 452
@@ -42,7 +40,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 161
     Height = 25
     Caption = 'Enviar Mensagem com HTML'
-    TabOrder = 2
+    TabOrder = 3
     OnClick = btnComHTMLClick
   end
   object gbServidorEmail: TGroupBox
@@ -51,7 +49,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 433
     Height = 185
     Caption = 'Servidor de Email'
-    TabOrder = 3
+    TabOrder = 0
     object lbSMTP: TLabel
       Left = 7
       Top = 24
@@ -202,7 +200,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 433
     Height = 121
     Caption = 'Envio'
-    TabOrder = 4
+    TabOrder = 1
     object lbDestinatario: TLabel
       Left = 12
       Top = 24
@@ -238,11 +236,11 @@ object frmPrincipal: TfrmPrincipal
     OnReceived = IdLogEventReceived
     OnSent = IdLogEventSent
     Left = 495
-    Top = 81
+    Top = 137
   end
   object OpenDialog: TOpenPictureDialog
     Filter = 'All (*.*)|*.*'
     Left = 556
-    Top = 81
+    Top = 137
   end
 end
